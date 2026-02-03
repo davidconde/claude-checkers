@@ -1,6 +1,6 @@
 # Checkers
 
-A two-player, turn-based American checkers game built with React, TypeScript, and Tailwind CSS.
+A two-player, turn-based American checkers game with a 3D board, built with React, TypeScript, React Three Fiber, and Tailwind CSS.
 
 ## How to Run
 
@@ -19,7 +19,7 @@ npm run build
 
 ## How to Play
 
-Click a piece to select it (highlighted with a yellow ring). Valid move destinations appear as yellow dots on the board. Click a highlighted square to move.
+Click a piece to select it (it glows yellow). Valid move destinations appear as translucent yellow markers on the board. Click a marker to move. Drag to rotate the camera around the board and scroll to zoom.
 
 Red moves first. Players alternate turns.
 
@@ -48,10 +48,10 @@ src/
     useGame.ts       # React hook bridging domain logic to UI via useReducer
   components/
     Game.tsx          # Top-level container
-    Board.tsx         # 8x8 CSS grid
-    Square.tsx        # Board cell with selection and move highlights
-    Piece.tsx         # Red/black circle with king indicator
+    Board3D.tsx       # 3D scene: Canvas, camera, lights, board base, square iteration
+    Square3D.tsx      # 3D square mesh with click handling and valid-move markers
+    Piece3D.tsx       # 3D cylinder piece with king crown and selection glow
     GameStatus.tsx    # Turn display, winner announcement, new game button
 ```
 
-All game logic lives in `src/game/` as pure functions with no framework dependencies. The React layer in `src/components/` handles rendering only. The `useGame` hook connects the two via `useReducer`.
+All game logic lives in `src/game/` as pure functions with no framework dependencies. The 3D scene in `src/components/` uses React Three Fiber for rendering. The `useGame` hook connects the two via `useReducer`.

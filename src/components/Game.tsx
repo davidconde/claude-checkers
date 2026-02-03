@@ -1,5 +1,5 @@
 import { useGame } from '../hooks/useGame';
-import { Board } from './Board';
+import { Board3D } from './Board3D';
 import { GameStatus } from './GameStatus';
 
 export function Game() {
@@ -17,7 +17,7 @@ export function Game() {
     <div className="flex flex-col items-center gap-6">
       <h1 className="text-3xl font-bold text-amber-100">Checkers</h1>
       <GameStatus currentPlayer={currentPlayer} winner={winner} onReset={resetGame} />
-      <Board
+      <Board3D
         board={board}
         selectedPiece={selectedPiece}
         validMoves={validMoves}
